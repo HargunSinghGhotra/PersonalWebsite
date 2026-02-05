@@ -3,7 +3,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Github, Linkedin, Mail, FileText, Code, Cpu, TrendingUp } from 'lucide-react';
+import { Github, Linkedin, Mail, FileText, Code, TrendingUp } from 'lucide-react';
 
 // You would import these from where you pasted the ReactBits code
 // import SplitText from '@/components/ui/SplitText'; 
