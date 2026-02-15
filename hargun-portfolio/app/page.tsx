@@ -2,7 +2,7 @@
 
 import React, { useRef, useState, useEffect, MouseEvent as ReactMouseEvent } from 'react';
 import { motion, useMotionValue, useSpring, useTransform, AnimatePresence } from 'framer-motion';
-import { Mail, FileText, Code, TrendingUp, MapPin, Coffee, ChevronRight, Zap, GraduationCap, Clock, User } from 'lucide-react';
+import { Mail, FileText, Code, TrendingUp, MapPin, ChevronRight, Zap, GraduationCap, User } from 'lucide-react';
 
 export default function Portfolio() {
   const [isMounted, setIsMounted] = useState(false);
@@ -104,7 +104,7 @@ export default function Portfolio() {
                 </div>
             </section>
 
-            {/* --- THE NEW ABOUT SECTION (RESPONSIVE FIX) --- */}
+            {/* --- THE NEW ABOUT SECTION --- */}
             <section id="about" className="mb-40">
                 <div className="flex items-center gap-6 mb-12">
                     <h2 className="text-3xl md:text-4xl font-black tracking-tighter">About Me</h2>
@@ -112,17 +112,14 @@ export default function Portfolio() {
                 </div>
 
                 <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
-                    {/* Profile & Summary */}
-                    <TiltCard className="lg:col-span-2 p-8 min-h-[22rem] h-full flex flex-col justify-end relative overflow-hidden group">
-                        <div className="absolute inset-0 z-0 bg-gradient-to-t from-[#020202] via-[#020202]/80 to-transparent"></div>
-                        {/* <img src="/profile.jpg" alt="Hargun Ghotra" className="absolute inset-0 w-full h-full object-cover z-[-1] opacity-40 group-hover:opacity-60 transition-opacity duration-700" /> */}
-                        
-                        <div className="relative z-10 mt-auto pt-10">
+                    {/* Centered Profile & Summary (No Fade) */}
+                    <TiltCard className="lg:col-span-2 p-8 min-h-[22rem] h-full flex flex-col justify-center items-center text-center relative overflow-hidden group">
+                        <div className="relative z-10 flex flex-col items-center">
                             <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center mb-6 border border-white/20 backdrop-blur-md">
                                 <User size={20} className="text-white" />
                             </div>
                             <h3 className="text-2xl font-bold text-white mb-3">The Architect</h3>
-                            <p className="text-sm text-zinc-400 leading-relaxed font-light max-w-lg">
+                            <p className="text-sm text-zinc-400 leading-relaxed font-light max-w-lg mx-auto">
                                 I am a passionate developer bridging the gap between <span className="text-cyan-400 font-medium">Systems Engineering</span> and <span className="text-violet-400 font-medium">Financial Analytics</span>. I build intelligent, high-performance applications that solve real-world problems.
                             </p>
                         </div>
@@ -148,31 +145,27 @@ export default function Portfolio() {
                         </div>
                     </TiltCard>
 
-                    {/* Live Clock & Vitals */}
+                    {/* Live Clock & Locations */}
                     <div className="lg:col-span-1 flex flex-col gap-6 min-h-[22rem] h-full">
-                        {/* Clock Widget */}
+                        {/* Centered Clock Widget (No Logo) */}
                         <TiltCard className="flex-1 p-6 flex flex-col justify-center items-center text-center relative overflow-hidden min-h-[10rem]">
-                            <Clock size={24} className="text-cyan-400 absolute top-4 left-4 opacity-20" />
                             <LiveClock />
                             <p className="text-[10px] font-mono text-zinc-500 uppercase tracking-widest mt-3">Local Time (EST)</p>
                         </TiltCard>
                         
-                        {/* Location & Fuel */}
-                        <TiltCard className="flex-1 p-6 flex flex-col justify-center min-h-[10rem]">
-                            <div className="flex items-center gap-3 mb-4">
+                        {/* Three Locations */}
+                        <TiltCard className="flex-1 p-6 flex flex-col justify-center items-center gap-3 min-h-[10rem]">
+                            <div className="flex items-center gap-3">
                                 <MapPin size={16} className="text-violet-400 shrink-0" />
                                 <span className="text-sm font-medium text-white">Blacksburg, VA</span>
                             </div>
-                            <div className="flex flex-wrap gap-2 mt-auto">
-                                <span className="text-[10px] uppercase tracking-wider bg-white/5 border border-white/10 px-2 py-1.5 rounded text-zinc-400 flex items-center gap-1.5">
-                                    <Coffee size={10} className="text-orange-400 shrink-0"/> Burgers
-                                </span>
-                                <span className="text-[10px] uppercase tracking-wider bg-white/5 border border-white/10 px-2 py-1.5 rounded text-zinc-400 flex items-center gap-1.5">
-                                    <Coffee size={10} className="text-yellow-400 shrink-0"/> Pancakes
-                                </span>
-                                <span className="text-[10px] uppercase tracking-wider bg-white/5 border border-white/10 px-2 py-1.5 rounded text-zinc-400 flex items-center gap-1.5">
-                                    <Coffee size={10} className="text-red-400 shrink-0"/> Hot Dogs
-                                </span>
+                            <div className="flex items-center gap-3">
+                                <MapPin size={16} className="text-violet-400 shrink-0" />
+                                <span className="text-sm font-medium text-white">Charlottesville, VA</span>
+                            </div>
+                            <div className="flex items-center gap-3">
+                                <MapPin size={16} className="text-violet-400 shrink-0" />
+                                <span className="text-sm font-medium text-white">Santa Clara, CA</span>
                             </div>
                         </TiltCard>
                     </div>
