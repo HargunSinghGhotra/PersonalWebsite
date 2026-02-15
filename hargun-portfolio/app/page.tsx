@@ -2,7 +2,6 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-// Fixed: Removed Github, Linkedin, and Cpu to prevent build errors
 import { Mail, FileText, Code, TrendingUp } from 'lucide-react';
 
 // NOTE: If you haven't created these files in components/ui/ yet, keep them commented out!
@@ -50,10 +49,10 @@ export default function Portfolio() {
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.4 }}
             >
-                {/* Fixed: Using the custom SVG components defined at the bottom */}
-                <SocialBtn icon={<GithubIcon />} href="https://github.com/yourusername" />
-                <SocialBtn icon={<LinkedinIcon />} href="https://linkedin.com/in/yourusername" />
-                <SocialBtn icon={<Mail size={20} />} href="mailto:your.email@vt.edu" />
+                {/* Updated with your actual links */}
+                <SocialBtn icon={<GithubIcon />} href="https://github.com/HargunSinghGhotra" />
+                <SocialBtn icon={<LinkedinIcon />} href="https://www.linkedin.com/in/hargunghotra" />
+                <SocialBtn icon={<Mail size={20} />} href="mailto:hargun@vt.edu" />
                 <SocialBtn icon={<FileText size={20} />} label="Resume" href="/resume.pdf" />
             </motion.div>
         </section>
@@ -163,7 +162,7 @@ function ProjectCard({ title, description, tags, color }: any) {
     );
 }
 
-// --- CUSTOM SVG ICONS (To replace deprecated Lucide icons) ---
+// --- CUSTOM SVG ICONS ---
 
 function GithubIcon() {
   return (
