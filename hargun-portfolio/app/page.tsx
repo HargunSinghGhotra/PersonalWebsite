@@ -90,7 +90,8 @@ export default function Portfolio() {
                     </motion.div>
                 </Magnetic>
                 
-                <h1 className="text-6xl md:text-[9rem] leading-none font-black tracking-tighter mb-8 bg-gradient-to-b from-white via-zinc-200 to-zinc-800 bg-clip-text text-transparent">
+                {/* RESPONSIVE HERO TEXT FIX */}
+                <h1 className="text-6xl sm:text-7xl md:text-8xl lg:text-[9rem] leading-[0.9] font-black tracking-tighter mb-8 bg-gradient-to-b from-white via-zinc-200 to-zinc-800 bg-clip-text text-transparent">
                     HARGUN<br/>GHOTRA
                 </h1>
 
@@ -103,43 +104,41 @@ export default function Portfolio() {
                 </div>
             </section>
 
-            {/* --- THE NEW ABOUT SECTION --- */}
+            {/* --- THE NEW ABOUT SECTION (RESPONSIVE FIX) --- */}
             <section id="about" className="mb-40">
                 <div className="flex items-center gap-6 mb-12">
                     <h2 className="text-3xl md:text-4xl font-black tracking-tighter">About Me</h2>
                     <div className="h-px flex-1 bg-gradient-to-r from-zinc-700 to-transparent"></div>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+                <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
                     {/* Profile & Summary */}
-                    <TiltCard className="md:col-span-2 p-8 h-80 flex flex-col justify-end relative overflow-hidden group">
-                        {/* Placeholder for Profile Picture - Update src later */}
+                    <TiltCard className="lg:col-span-2 p-8 min-h-[22rem] h-full flex flex-col justify-end relative overflow-hidden group">
                         <div className="absolute inset-0 z-0 bg-gradient-to-t from-[#020202] via-[#020202]/80 to-transparent"></div>
-                        {/* Once you have a photo, uncomment the img tag below and place profile.jpg in your public folder */}
                         {/* <img src="/profile.jpg" alt="Hargun Ghotra" className="absolute inset-0 w-full h-full object-cover z-[-1] opacity-40 group-hover:opacity-60 transition-opacity duration-700" /> */}
                         
-                        <div className="relative z-10">
-                            <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center mb-4 border border-white/20 backdrop-blur-md">
+                        <div className="relative z-10 mt-auto pt-10">
+                            <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center mb-6 border border-white/20 backdrop-blur-md">
                                 <User size={20} className="text-white" />
                             </div>
-                            <h3 className="text-2xl font-bold text-white mb-2">The Architect</h3>
-                            <p className="text-sm text-zinc-400 leading-relaxed font-light">
+                            <h3 className="text-2xl font-bold text-white mb-3">The Architect</h3>
+                            <p className="text-sm text-zinc-400 leading-relaxed font-light max-w-lg">
                                 I am a passionate developer bridging the gap between <span className="text-cyan-400 font-medium">Systems Engineering</span> and <span className="text-violet-400 font-medium">Financial Analytics</span>. I build intelligent, high-performance applications that solve real-world problems.
                             </p>
                         </div>
                     </TiltCard>
 
                     {/* Education */}
-                    <TiltCard className="md:col-span-1 p-8 h-80 flex flex-col justify-between">
+                    <TiltCard className="lg:col-span-1 p-8 min-h-[22rem] h-full flex flex-col justify-between">
                         <div>
-                            <div className="w-12 h-12 rounded-full bg-orange-500/10 flex items-center justify-center mb-4 border border-orange-500/20 text-orange-400">
+                            <div className="w-12 h-12 rounded-full bg-orange-500/10 flex items-center justify-center mb-6 border border-orange-500/20 text-orange-400">
                                 <GraduationCap size={20} />
                             </div>
-                            <h3 className="text-xl font-medium text-white mb-1">Education</h3>
-                            <p className="text-sm text-zinc-400 font-medium">Virginia Tech</p>
+                            <h3 className="text-xl font-medium text-white mb-2">Education</h3>
+                            <p className="text-sm text-zinc-400 font-medium mb-6">Virginia Tech</p>
                         </div>
-                        <div className="space-y-3">
-                            <div className="text-xs text-zinc-400 bg-white/[0.03] p-3 rounded-xl border border-white/[0.05]">
+                        <div className="space-y-4">
+                            <div className="text-xs text-zinc-400 bg-white/[0.03] p-4 rounded-xl border border-white/[0.05]">
                                 <span className="text-white font-medium block mb-1">B.S. Computer Science</span>
                                 Minor in Finance
                             </div>
@@ -150,29 +149,29 @@ export default function Portfolio() {
                     </TiltCard>
 
                     {/* Live Clock & Vitals */}
-                    <div className="md:col-span-1 flex flex-col gap-6 h-80">
+                    <div className="lg:col-span-1 flex flex-col gap-6 min-h-[22rem] h-full">
                         {/* Clock Widget */}
-                        <TiltCard className="flex-1 p-6 flex flex-col justify-center items-center text-center relative overflow-hidden">
+                        <TiltCard className="flex-1 p-6 flex flex-col justify-center items-center text-center relative overflow-hidden min-h-[10rem]">
                             <Clock size={24} className="text-cyan-400 absolute top-4 left-4 opacity-20" />
                             <LiveClock />
-                            <p className="text-[10px] font-mono text-zinc-500 uppercase tracking-widest mt-2">Local Time (EST)</p>
+                            <p className="text-[10px] font-mono text-zinc-500 uppercase tracking-widest mt-3">Local Time (EST)</p>
                         </TiltCard>
                         
                         {/* Location & Fuel */}
-                        <TiltCard className="flex-1 p-6 flex flex-col justify-center">
-                            <div className="flex items-center gap-3 mb-2">
-                                <MapPin size={16} className="text-violet-400" />
+                        <TiltCard className="flex-1 p-6 flex flex-col justify-center min-h-[10rem]">
+                            <div className="flex items-center gap-3 mb-4">
+                                <MapPin size={16} className="text-violet-400 shrink-0" />
                                 <span className="text-sm font-medium text-white">Blacksburg, VA</span>
                             </div>
-                            <div className="flex flex-wrap gap-2 mt-2">
-                                <span className="text-[10px] uppercase tracking-wider bg-white/5 border border-white/10 px-2 py-1 rounded text-zinc-400 flex items-center gap-1">
-                                    <Coffee size={10} className="text-orange-400"/> Burgers
+                            <div className="flex flex-wrap gap-2 mt-auto">
+                                <span className="text-[10px] uppercase tracking-wider bg-white/5 border border-white/10 px-2 py-1.5 rounded text-zinc-400 flex items-center gap-1.5">
+                                    <Coffee size={10} className="text-orange-400 shrink-0"/> Burgers
                                 </span>
-                                <span className="text-[10px] uppercase tracking-wider bg-white/5 border border-white/10 px-2 py-1 rounded text-zinc-400 flex items-center gap-1">
-                                    <Coffee size={10} className="text-yellow-400"/> Pancakes
+                                <span className="text-[10px] uppercase tracking-wider bg-white/5 border border-white/10 px-2 py-1.5 rounded text-zinc-400 flex items-center gap-1.5">
+                                    <Coffee size={10} className="text-yellow-400 shrink-0"/> Pancakes
                                 </span>
-                                <span className="text-[10px] uppercase tracking-wider bg-white/5 border border-white/10 px-2 py-1 rounded text-zinc-400 flex items-center gap-1">
-                                    <Coffee size={10} className="text-red-400"/> Hot Dogs
+                                <span className="text-[10px] uppercase tracking-wider bg-white/5 border border-white/10 px-2 py-1.5 rounded text-zinc-400 flex items-center gap-1.5">
+                                    <Coffee size={10} className="text-red-400 shrink-0"/> Hot Dogs
                                 </span>
                             </div>
                         </TiltCard>
@@ -295,7 +294,7 @@ function Preloader() {
                 <motion.div 
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    className="absolute text-3xl font-bold tracking-widest text-white mt-32"
+                    className="absolute text-3xl font-bold tracking-widest text-white mt-32 text-center px-4"
                 >
                     HARGUN GHOTRA.
                 </motion.div>
@@ -314,10 +313,10 @@ function LiveClock() {
         return () => clearInterval(timer);
     }, []);
 
-    if (!time) return <div className="text-4xl font-light text-white">--:--:--</div>;
+    if (!time) return <div className="text-3xl sm:text-4xl font-light text-white">--:--:--</div>;
 
     return (
-        <div className="text-3xl md:text-4xl font-light text-white tracking-tight">
+        <div className="text-3xl sm:text-4xl font-light text-white tracking-tight">
             {time.toLocaleTimeString('en-US', { hour12: false, hour: '2-digit', minute: '2-digit', second: '2-digit' })}
         </div>
     );
@@ -407,11 +406,11 @@ function ProjectCard({ title, event, description, tags, delay }: any) {
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.8, delay: delay, ease: [0.16, 1, 0.3, 1] }}
         >
-            <TiltCard className="p-8 h-full flex flex-col group cursor-pointer">
+            <TiltCard className="p-8 h-full flex flex-col group cursor-pointer min-h-[20rem]">
                 <div className="relative z-10 flex-1">
                     <div className="flex justify-between items-start mb-6">
                         <p className="text-[10px] font-mono text-cyan-500 uppercase tracking-widest bg-cyan-500/10 px-2 py-1 rounded">{event}</p>
-                        <ChevronRight size={18} className="text-zinc-600 group-hover:text-white transition-all group-hover:translate-x-2 duration-300" />
+                        <ChevronRight size={18} className="text-zinc-600 group-hover:text-white transition-all group-hover:translate-x-2 duration-300 shrink-0 ml-2" />
                     </div>
                     <h3 className="text-2xl font-bold text-zinc-100 mb-4 group-hover:text-cyan-400 transition-colors duration-300">{title}</h3>
                     <p className="text-zinc-400 mb-8 leading-relaxed text-sm font-light">{description}</p>
@@ -454,11 +453,11 @@ function CustomCursor() {
         <>
             <div 
                 ref={cursorRef} 
-                className="fixed top-0 left-0 w-8 h-8 rounded-full border border-zinc-500 pointer-events-none z-[100] -ml-4 -mt-4 transition-transform ease-out"
+                className="fixed top-0 left-0 w-8 h-8 rounded-full border border-zinc-500 pointer-events-none z-[100] -ml-4 -mt-4 transition-transform ease-out hidden lg:block"
             />
             <div 
                 ref={dotRef} 
-                className="fixed top-0 left-0 w-1.5 h-1.5 bg-white rounded-full pointer-events-none z-[100] -ml-[3px] -mt-[3px]"
+                className="fixed top-0 left-0 w-1.5 h-1.5 bg-white rounded-full pointer-events-none z-[100] -ml-[3px] -mt-[3px] hidden lg:block"
             />
         </>
     );
