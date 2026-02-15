@@ -11,7 +11,6 @@ export default function Portfolio() {
   // Handle Mount & Preloader timing
   useEffect(() => {
     setIsMounted(true);
-    // The boot sequence lasts 2.8 seconds
     const timer = setTimeout(() => {
       setIsLoading(false);
     }, 2800);
@@ -53,7 +52,7 @@ export default function Portfolio() {
         />
       </div>
 
-      {/* MAIN CONTENT (Fades in after preloader) */}
+      {/* MAIN CONTENT */}
       <motion.div 
         initial={{ opacity: 0 }}
         animate={{ opacity: isLoading ? 0 : 1 }}
@@ -90,7 +89,6 @@ export default function Portfolio() {
                     </motion.div>
                 </Magnetic>
                 
-                {/* RESPONSIVE HERO TEXT FIX */}
                 <h1 className="text-6xl sm:text-7xl md:text-8xl lg:text-[9rem] leading-[0.9] font-black tracking-tighter mb-8 bg-gradient-to-b from-white via-zinc-200 to-zinc-800 bg-clip-text text-transparent">
                     HARGUN<br/>GHOTRA
                 </h1>
@@ -162,11 +160,11 @@ export default function Portfolio() {
                     </TiltCard>
 
                     {/* Live Clock & Locations */}
-                    <div className="lg:col-span-1 flex flex-col gap-6 min-h-[26rem] h-full">
-                        {/* Centered Clock Widget (No Logo) */}
-                        <TiltCard className="flex-1 p-6 flex flex-col justify-center items-center text-center relative overflow-hidden min-h-[12rem]">
+                    <div className="lg:col-span-1 flex flex-col gap-6 min-h-[32rem]">
+                        {/* THE NEW ANALOG + DIGITAL CLOCK WIDGET */}
+                        <TiltCard className="flex-1 p-6 flex flex-col justify-center items-center text-center relative overflow-hidden min-h-[14rem]">
                             <LiveClock />
-                            <p className="text-xs font-mono text-zinc-500 uppercase tracking-widest mt-4">Local Time (EST)</p>
+                            <p className="text-[10px] font-mono text-zinc-500 uppercase tracking-widest mt-2">Local Time (EST)</p>
                         </TiltCard>
                         
                         {/* Expanded Locations (Scaled up to fill box) */}
@@ -318,7 +316,7 @@ function Preloader() {
     );
 }
 
-// --- LIVE CLOCK WIDGET ---
+// --- THE NEW ANALOG + DIGITAL LIVE CLOCK ---
 function LiveClock() {
     const [time, setTime] = useState<Date | null>(null);
 
@@ -328,15 +326,65 @@ function LiveClock() {
         return () => clearInterval(timer);
     }, []);
 
-    if (!time) return <div className="text-4xl sm:text-5xl font-light text-white">--:--:--</div>;
+    // Server-side fallback to prevent hydration mismatch
+    if (!time) return (
+        <div className="flex flex-col items-center gap-4 w-full">
+            <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-full border border-white/10 bg-white/5 animate-pulse"></div>
+            <div className="text-2xl sm:text-3xl font-light text-zinc-700 tracking-tight">--:--:--</div>
+        </div>
+    );
+
+    // Calculate angles for the hands
+    const seconds = time.getSeconds();
+    const minutes = time.getMinutes();
+    const hours = time.getHours();
+
+    const secondDegrees = seconds * 6;
+    const minuteDegrees = minutes * 6 + seconds * 0.1;
+    const hourDegrees = (hours % 12) * 30 + minutes * 0.5;
 
     return (
-        <div className="text-4xl sm:text-5xl font-light text-white tracking-tight">
-            {time.toLocaleTimeString('en-US', { hour12: false, hour: '2-digit', minute: '2-digit', second: '2-digit' })}
+        <div className="flex flex-col items-center gap-5 w-full">
+            
+            {/* The Analog Clock Face */}
+            <div className="relative w-24 h-24 sm:w-28 sm:h-28 rounded-full border border-white/10 bg-[#0a0a0a] shadow-[inset_0_0_20px_rgba(255,255,255,0.02)] flex items-center justify-center">
+                
+                {/* 12 Minimalist Tick Marks */}
+                {[...Array(12)].map((_, i) => (
+                    <div key={i} className="absolute w-full h-full" style={{ transform: `rotate(${i * 30}deg)` }}>
+                        <div className={`mx-auto w-[1.5px] rounded-full ${i % 3 === 0 ? 'h-2 bg-zinc-400' : 'h-1 bg-zinc-700'} mt-1.5`}></div>
+                    </div>
+                ))}
+
+                {/* Hour Hand */}
+                <div className="absolute w-full h-full" style={{ transform: `rotate(${hourDegrees}deg)` }}>
+                    <div className="mx-auto w-[2.5px] h-[30%] bg-zinc-200 rounded-full mt-[25%] shadow-[0_0_5px_rgba(0,0,0,0.5)]"></div>
+                </div>
+
+                {/* Minute Hand */}
+                <div className="absolute w-full h-full" style={{ transform: `rotate(${minuteDegrees}deg)` }}>
+                    <div className="mx-auto w-[1.5px] h-[40%] bg-zinc-400 rounded-full mt-[15%] shadow-[0_0_5px_rgba(0,0,0,0.5)]"></div>
+                </div>
+
+                {/* Second Hand (Snaps precisely with no transition delay) */}
+                <div className="absolute w-full h-full" style={{ transform: `rotate(${secondDegrees}deg)` }}>
+                    <div className="mx-auto w-[1px] h-[50%] bg-cyan-400 rounded-full mt-[10%] shadow-[0_0_8px_rgba(6,182,212,0.8)]"></div>
+                </div>
+
+                {/* Center Pivot Pin */}
+                <div className="absolute w-1.5 h-1.5 bg-zinc-200 rounded-full z-10 shadow-[0_0_4px_rgba(0,0,0,0.5)]">
+                    <div className="absolute inset-[1.5px] bg-cyan-500 rounded-full"></div>
+                </div>
+            </div>
+
+            {/* The Digital Time Readout */}
+            <div className="text-2xl sm:text-3xl font-light text-white tracking-tight">
+                {time.toLocaleTimeString('en-US', { hour12: false, hour: '2-digit', minute: '2-digit', second: '2-digit' })}
+            </div>
+            
         </div>
     );
 }
-
 
 // --- ULTIMATE 3D / INTERACTIVE COMPONENTS ---
 
