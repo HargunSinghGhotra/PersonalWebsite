@@ -112,60 +112,84 @@ export default function Portfolio() {
                 </div>
 
                 <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
-                    {/* Centered Profile & Summary (No Fade) */}
-                    <TiltCard className="lg:col-span-2 p-8 min-h-[22rem] h-full flex flex-col justify-center items-center text-center relative overflow-hidden group">
-                        <div className="relative z-10 flex flex-col items-center">
-                            <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center mb-6 border border-white/20 backdrop-blur-md">
-                                <User size={20} className="text-white" />
+                    {/* Centered Profile & Summary */}
+                    <TiltCard className="lg:col-span-2 p-10 min-h-[26rem] h-full flex flex-col justify-center items-center text-center relative overflow-hidden group">
+                        
+                        {/* FIX: Background Image Layering */}
+                        <div className="absolute inset-0 z-0 overflow-hidden rounded-3xl">
+                            {/* Make sure the image file is named EXACTLY profile.jpg and is inside the public folder */}
+                            <img src="/profile.jpg" alt="Hargun Ghotra" className="w-full h-full object-cover opacity-30 group-hover:opacity-50 transition-opacity duration-700" />
+                            <div className="absolute inset-0 bg-gradient-to-t from-[#020202] via-[#020202]/90 to-transparent"></div>
+                        </div>
+
+                        <div className="relative z-10 flex flex-col items-center w-full">
+                            <div className="w-14 h-14 rounded-full bg-white/10 flex items-center justify-center mb-6 border border-white/20 backdrop-blur-md shadow-[0_0_20px_rgba(255,255,255,0.05)]">
+                                <User size={24} className="text-white" />
                             </div>
-                            <h3 className="text-2xl font-bold text-white mb-3">The Architect</h3>
-                            <p className="text-sm text-zinc-400 leading-relaxed font-light max-w-lg mx-auto">
-                                I am a passionate developer bridging the gap between <span className="text-cyan-400 font-medium">Systems Engineering</span> and <span className="text-violet-400 font-medium">Financial Analytics</span>. I build intelligent, high-performance applications that solve real-world problems.
-                            </p>
+                            <h3 className="text-3xl font-bold text-white mb-6 tracking-tight">The Architect</h3>
+                            
+                            {/* Expanded Text Section to fill the box */}
+                            <div className="text-sm md:text-base text-zinc-400 leading-relaxed font-light space-y-4 max-w-2xl mx-auto">
+                                <p>
+                                    I am a passionate developer bridging the gap between <span className="text-cyan-400 font-medium">Systems Engineering</span> and <span className="text-violet-400 font-medium">Financial Analytics</span>. I am currently a Sophomore pursuing a B.S. in Computer Science at Virginia Tech, with a minor in Finance.
+                                </p>
+                                <p>
+                                    My technical foundation spans object-oriented design, database management, and full-stack development, complemented by hands-on experience with Python, Java, React, and SQL.
+                                </p>
+                                <p>
+                                    I am actively seeking Summer 2026 internships in Software Engineering, AI/ML, or FinTech, eager to apply my background in algorithmic problem-solving to build scalable, user-centric solutions.
+                                </p>
+                            </div>
                         </div>
                     </TiltCard>
 
                     {/* Education */}
-                    <TiltCard className="lg:col-span-1 p-8 min-h-[22rem] h-full flex flex-col justify-between">
+                    <TiltCard className="lg:col-span-1 p-8 min-h-[26rem] h-full flex flex-col justify-between">
                         <div>
-                            <div className="w-12 h-12 rounded-full bg-orange-500/10 flex items-center justify-center mb-6 border border-orange-500/20 text-orange-400">
-                                <GraduationCap size={20} />
+                            <div className="w-14 h-14 rounded-full bg-orange-500/10 flex items-center justify-center mb-6 border border-orange-500/20 text-orange-400 shadow-[0_0_20px_rgba(249,115,22,0.1)]">
+                                <GraduationCap size={24} />
                             </div>
-                            <h3 className="text-xl font-medium text-white mb-2">Education</h3>
-                            <p className="text-sm text-zinc-400 font-medium mb-6">Virginia Tech</p>
+                            <h3 className="text-2xl font-medium text-white mb-2">Education</h3>
+                            <p className="text-base text-zinc-400 font-medium mb-6">Virginia Tech</p>
                         </div>
                         <div className="space-y-4">
-                            <div className="text-xs text-zinc-400 bg-white/[0.03] p-4 rounded-xl border border-white/[0.05]">
-                                <span className="text-white font-medium block mb-1">B.S. Computer Science</span>
+                            <div className="text-sm text-zinc-400 bg-white/[0.03] p-5 rounded-xl border border-white/[0.05]">
+                                <span className="text-white font-medium block mb-2">B.S. Computer Science</span>
                                 Minor in Finance
                             </div>
-                            <div className="text-xs font-mono text-orange-400/80 uppercase tracking-widest">
+                            <div className="text-sm font-mono text-orange-400/80 uppercase tracking-widest">
                                 Est. May 2028
                             </div>
                         </div>
                     </TiltCard>
 
                     {/* Live Clock & Locations */}
-                    <div className="lg:col-span-1 flex flex-col gap-6 min-h-[22rem] h-full">
+                    <div className="lg:col-span-1 flex flex-col gap-6 min-h-[26rem] h-full">
                         {/* Centered Clock Widget (No Logo) */}
-                        <TiltCard className="flex-1 p-6 flex flex-col justify-center items-center text-center relative overflow-hidden min-h-[10rem]">
+                        <TiltCard className="flex-1 p-6 flex flex-col justify-center items-center text-center relative overflow-hidden min-h-[12rem]">
                             <LiveClock />
-                            <p className="text-[10px] font-mono text-zinc-500 uppercase tracking-widest mt-3">Local Time (EST)</p>
+                            <p className="text-xs font-mono text-zinc-500 uppercase tracking-widest mt-4">Local Time (EST)</p>
                         </TiltCard>
                         
-                        {/* Three Locations */}
-                        <TiltCard className="flex-1 p-6 flex flex-col justify-center items-center gap-3 min-h-[10rem]">
-                            <div className="flex items-center gap-3">
-                                <MapPin size={16} className="text-violet-400 shrink-0" />
-                                <span className="text-sm font-medium text-white">Blacksburg, VA</span>
+                        {/* Expanded Locations (Scaled up to fill box) */}
+                        <TiltCard className="flex-1 px-4 py-8 flex flex-col justify-evenly items-center min-h-[12rem] h-full">
+                            <div className="flex items-center gap-4">
+                                <MapPin size={22} className="text-violet-400 shrink-0" />
+                                <span className="text-lg font-medium text-white tracking-wide">Blacksburg, VA</span>
                             </div>
-                            <div className="flex items-center gap-3">
-                                <MapPin size={16} className="text-violet-400 shrink-0" />
-                                <span className="text-sm font-medium text-white">Charlottesville, VA</span>
+                            
+                            <div className="w-12 h-px bg-white/10 my-2"></div>
+                            
+                            <div className="flex items-center gap-4">
+                                <MapPin size={22} className="text-violet-400 shrink-0" />
+                                <span className="text-lg font-medium text-white tracking-wide">Charlottesville, VA</span>
                             </div>
-                            <div className="flex items-center gap-3">
-                                <MapPin size={16} className="text-violet-400 shrink-0" />
-                                <span className="text-sm font-medium text-white">Santa Clara, CA</span>
+                            
+                            <div className="w-12 h-px bg-white/10 my-2"></div>
+                            
+                            <div className="flex items-center gap-4">
+                                <MapPin size={22} className="text-violet-400 shrink-0" />
+                                <span className="text-lg font-medium text-white tracking-wide">Santa Clara, CA</span>
                             </div>
                         </TiltCard>
                     </div>
@@ -306,10 +330,10 @@ function LiveClock() {
         return () => clearInterval(timer);
     }, []);
 
-    if (!time) return <div className="text-3xl sm:text-4xl font-light text-white">--:--:--</div>;
+    if (!time) return <div className="text-4xl sm:text-5xl font-light text-white">--:--:--</div>;
 
     return (
-        <div className="text-3xl sm:text-4xl font-light text-white tracking-tight">
+        <div className="text-4xl sm:text-5xl font-light text-white tracking-tight">
             {time.toLocaleTimeString('en-US', { hour12: false, hour: '2-digit', minute: '2-digit', second: '2-digit' })}
         </div>
     );
