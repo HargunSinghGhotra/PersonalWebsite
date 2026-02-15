@@ -114,19 +114,17 @@ export default function Portfolio() {
                 <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
                     {/* Centered Profile & Summary */}
                     <TiltCard className="lg:col-span-2 p-10 min-h-[26rem] h-full flex flex-col justify-center items-center text-center relative overflow-hidden group">
-                        
-                        {/* FIX: Background Image Layering */}
-                        <div className="absolute inset-0 z-0 overflow-hidden rounded-3xl">
-                            {/* Make sure the image file is named EXACTLY profile.jpg and is inside the public folder */}
-                            <img src="/profile.jpg" alt="Hargun Ghotra" className="w-full h-full object-cover opacity-30 group-hover:opacity-50 transition-opacity duration-700" />
-                            <div className="absolute inset-0 bg-gradient-to-t from-[#020202] via-[#020202]/90 to-transparent"></div>
-                        </div>
 
                         <div className="relative z-10 flex flex-col items-center w-full">
-                            <div className="w-14 h-14 rounded-full bg-white/10 flex items-center justify-center mb-6 border border-white/20 backdrop-blur-md shadow-[0_0_20px_rgba(255,255,255,0.05)]">
-                                <User size={24} className="text-white" />
+                            <h3 className="text-3xl font-bold text-white mb-6 tracking-tight">Hi, I'm Hargun</h3>
+                            
+                            {/* Profile Picture Circle */}
+                            <div className="w-20 h-20 rounded-full bg-white/10 flex items-center justify-center mb-6 border border-white/20 backdrop-blur-md shadow-[0_0_20px_rgba(255,255,255,0.05)] shrink-0 overflow-hidden relative">
+                                {/* Fallback icon stays behind the image */}
+                                <User size={28} className="text-white/30 absolute z-0" />
+                                {/* The actual image (Make sure profile.jpg is in the public folder) */}
+                                <img src="/profile.jpg" alt="Hargun Ghotra" className="w-full h-full object-cover relative z-10" onError={(e) => e.currentTarget.style.display = 'none'} />
                             </div>
-                            <h3 className="text-3xl font-bold text-white mb-6 tracking-tight">The Architect</h3>
                             
                             {/* Expanded Text Section to fill the box */}
                             <div className="text-sm md:text-base text-zinc-400 leading-relaxed font-light space-y-4 max-w-2xl mx-auto">
